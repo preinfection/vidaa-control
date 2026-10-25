@@ -7,3 +7,7 @@ server/.home_watch_off
 __pycache__/
 *.pyc
 .DS_Store
+
+.backups/
+*.apkm
+*.xapk

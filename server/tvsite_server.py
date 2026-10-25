@@ -75,6 +75,13 @@ class Handler(SimpleHTTPRequestHandler):
             self.send_response(204)
             self.end_headers()
             return
+        if u.path == "/klog":
+            print("KEYLOG", {k: v for k, v in q.items()}, flush=True)
+            self.send_response(204)
+            self.end_headers()
+            return
+        if u.path == "/":
+            self.path = "/launcher-canvas.html"
         if u.path == "/api/apps":
             return self._json(apps())
         if u.path == "/api/sources":
@@ -83,6 +90,10 @@ class Handler(SimpleHTTPRequestHandler):
             return self._json(backend_rpc.handle("launch", q.get("name", "")))
         if u.path == "/api/source":
             return self._json(switch_source(q.get("id", "")))
+        if u.path == "/api/key":
+            return self._json(backend_rpc.handle("key", q.get("k", "")))
+        if u.path == "/api/volume":
+            return self._json(backend_rpc.handle("set_volume", q.get("v", "")))
         if u.path == "/api/state":
             return self._json(backend_rpc.handle("state", None))
         return super().do_GET()
