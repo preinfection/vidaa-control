@@ -1,4 +1,4 @@
-# Fuck VIDAA
+<h1 align="center">Fuck VIDAA</h1>
 
 **Remote control, modern pairing, and an unfinished escape from the stock home screen.**
 
