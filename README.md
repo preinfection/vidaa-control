@@ -232,6 +232,18 @@ PC / phone / local script
 
 `tv.py` also reads the UPnP device descriptor, trying ports `18400` and `38400`. Descriptor discovery is separate from SOAP volume/playback queries, which are not implemented here yet.
 
+### Connection settings
+
+Set these environment variables before starting Python. Restart the server after changing them.
+
+| Variable | Purpose |
+| --- | --- |
+| `HISENSE_HOST` | Explicit host for modern pairing; a fallback after the cached host and discovery when the control server selects a TV. |
+| `HISENSE_CERT` | Path to your client certificate. Set together with `HISENSE_KEY`. |
+| `HISENSE_KEY` | Path to the matching client private key. |
+| `HISENSE_AUTH` | Optional authentication-mode override: `static`, `middle`, or `modern`. Normally selected from the device descriptor. |
+| `HISENSE_MAC` | Optional override when descriptor lookup cannot supply the TV's real MAC address. |
+
 ### Research notes
 
 The main progress was getting through the authentication chain on the tested newer firmware:
